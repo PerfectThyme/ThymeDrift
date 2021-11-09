@@ -2,6 +2,7 @@ from setuptools import setup, find_packages
 
 PACKAGES = find_packages()
 
+
 def setup_package() -> None:
     setup(
         name="ThymeDrift",
@@ -23,6 +24,7 @@ def setup_package() -> None:
         license="",
         requires=""
     )
+
 
 if __name__ == "main":
     setup_package()
