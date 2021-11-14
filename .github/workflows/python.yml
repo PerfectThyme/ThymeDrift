@@ -1,19 +1,19 @@
 name: Python - Lint and Test
-on: 
+on:
   push:
     paths:
-      - 'thymedrift/**'
-      - 'tests/**'
-      - 'requirements.txt'
-      - 'requirements.azure.txt'
-      - '.github/workflows/python.yml'
+      - "thymedrift/**"
+      - "tests/**"
+      - "requirements.txt"
+      - "requirements.azure.txt"
+      - ".github/workflows/python.yml"
   pull_request:
     paths:
-      - 'thymedrift/**'
-      - 'tests/**'
-      - 'requirements.txt'
-      - 'requirements.azure.txt'
-      - '.github/workflows/python.yml'
+      - "thymedrift/**"
+      - "tests/**"
+      - "requirements.txt"
+      - "requirements.azure.txt"
+      - ".github/workflows/python.yml"
 
 jobs:
   lint:
@@ -35,16 +35,16 @@ jobs:
       - name: Check Out Repository
         id: checkout_repository
         uses: actions/checkout@v2
-      
+
       # Run Python Linting
       - name: Run Python Linting
         id: python_linting
         run: |
           python -m pip install --upgrade pip
           pip install flake8 -q
-          flake8 app/ --count --ignore=E501,F401 --show-source --statistics
+          flake8 thymedrift/ --count --ignore=E501,F401 --show-source --statistics
           flake8 tests/ --count --ignore=F401,E501,E402,E712 --show-source --statistics
-      
+
       # Run Python Tests
       - name: Run Python Tests
         id: python_test
@@ -52,5 +52,4 @@ jobs:
           pip install pytest -q
           pip install -r requirements.txt -q
           pip install -r requirements.azure.txt -q
-          python -m spacy download en_core_web_trf
           python -m pytest
