@@ -17,7 +17,7 @@ class QualityLogger(Singleton):
             name=__name__,
             level=logging.INFO
         )
-    
+
     def log(self, message: str, level: QualityLoggingLevels) -> None:
         self.logger.log(
             level=level,
