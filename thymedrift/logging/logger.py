@@ -1,6 +1,7 @@
 import logging
 from typing import Any
 from enum import Enum
+
 from ..util import Singleton
 
 
@@ -18,6 +19,7 @@ class QualityLogger(Singleton):
             level=logging.INFO
         )
 
+    @classmethod
     def log(self, message: str, level: QualityLoggingLevels) -> None:
         self.logger.log(
             level=level,
@@ -27,7 +29,10 @@ class QualityLogger(Singleton):
 
 @staticmethod
 def add_azure_application_insights(connection_string: str) -> None:
-    from opencensus.ext.azure.log_exporter import AzureEventHandler
+    try:
+        from opencensus.ext.azure.log_exporter import AzureEventHandler
+    except ImportError:
+        raise ImportError("Could not import 'opencensus.ext.azure.log_exporter' which is required for this Azure feature.")
 
     # Create quality logger
     quality_logger = QualityLogger()
