@@ -29,15 +29,15 @@ class QualityLogger(Singleton):
 def add_azure_application_insights(connection_string: str) -> None:
     from opencensus.ext.azure.log_exporter import AzureEventHandler
 
-    # Create logger singleton
-    logger = QualityLogger()
+    # Create quality logger
+    quality_logger = QualityLogger()
 
     # Create stream handler
     logger_stream_handler = logging.StreamHandler()
     logger_stream_handler.setFormatter(logging.Formatter("[%(asctime)s] [%(levelname)s] %(message)s"))
-    logger.addHandler(logger_stream_handler)
+    quality_logger.logger.addHandler(logger_stream_handler)
 
     # Add azure event handler
     azure_event_handler = AzureEventHandler()
     azure_event_handler.setFormatter(logging.Formatter("[%(asctime)s] [%(levelname)s] %(message)s"))
-    logger.addHandler(azure_event_handler)
+    quality_logger.logger.addHandler(azure_event_handler)
