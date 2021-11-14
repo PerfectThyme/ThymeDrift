@@ -1,6 +1,7 @@
 name: Python - Lint and Test
 on:
   push:
+    branches: [ main ]
     paths:
       - "thymedrift/**"
       - "tests/**"
@@ -8,6 +9,7 @@ on:
       - "requirements.azure.txt"
       - ".github/workflows/python.yml"
   pull_request:
+    branches: [ main ]
     paths:
       - "thymedrift/**"
       - "tests/**"
