@@ -12,6 +12,7 @@ def test_data_logger_singleton() -> None:
     # assert
     assert data_logger1 is data_logger2
 
+
 def test_data_logger_logging() -> None:
     # arrange
     data_logger = DataLogger()
