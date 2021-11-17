@@ -1,6 +1,6 @@
 import logging
-from typing import Any
 from enum import IntEnum
+from typing import Any
 
 from ..util import Singleton
 
@@ -24,7 +24,7 @@ class DataLogger(Singleton):
             level=level,
             msg=message,
         )
-    
+
     def add_azure_application_insights(self, connection_string: str) -> None:
         try:
             from opencensus.ext.azure.log_exporter import AzureEventHandler
