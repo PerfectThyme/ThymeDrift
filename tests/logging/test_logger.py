@@ -1,13 +1,27 @@
 import pytest
-from thymedrift.logging.logger import QualityLogger
+from thymedrift.logging.logger import DataLogger, DataLoggingLevels
 
 
-def test_quality_logger_singleton() -> None:
+def test_data_logger_singleton() -> None:
     # arrange
-    quality_logger1 = QualityLogger()
-    quality_logger2 = QualityLogger()
+    data_logger1 = DataLogger()
+    data_logger2 = DataLogger()
 
     # action
 
     # assert
-    assert quality_logger1 is quality_logger2
+    assert data_logger1 is data_logger2
+
+def test_data_logger_logging() -> None:
+    # arrange
+    data_logger = DataLogger()
+    message = "This is a test."
+    level = DataLoggingLevels.INFO
+
+    # action
+    data_logger.log(
+        message=message,
+        level=level
+    )
+
+    # assert

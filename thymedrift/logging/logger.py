@@ -1,26 +1,25 @@
 import logging
 from typing import Any
-from enum import Enum
+from enum import IntEnum
 
 from ..util import Singleton
 
 
-class QualityLoggingLevels(Enum):
+class DataLoggingLevels(IntEnum):
     DEBUG = logging.DEBUG
     INFO = logging.INFO
     ERROR = logging.ERROR
     CRITICAL = logging.CRITICAL
 
 
-class QualityLogger(Singleton):
+class DataLogger(Singleton):
     def __init__(self) -> None:
         self.logger = logging.Logger(
             name=__name__,
             level=logging.INFO
         )
 
-    @classmethod
-    def log(self, message: str, level: QualityLoggingLevels) -> None:
+    def log(self, message: str, level: DataLoggingLevels) -> None:
         self.logger.log(
             level=level,
             msg=message,
@@ -35,7 +34,7 @@ def add_azure_application_insights(connection_string: str) -> None:
         raise ImportError("Could not import 'opencensus.ext.azure.log_exporter' which is required for this Azure feature.")
 
     # Create quality logger
-    quality_logger = QualityLogger()
+    quality_logger = DataLogger()
 
     # Create stream handler
     logger_stream_handler = logging.StreamHandler()
