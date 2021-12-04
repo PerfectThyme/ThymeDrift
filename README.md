@@ -42,7 +42,7 @@ Today there are no product feature available to address the challenges outlined 
 
 Customers are asking for this. As their data estates grows and they are adopting patterns for distributed data environments, enabling teams to be self serviced and increase automation, it increases the need for continuous monitoring and maintenance of data quality and data dependencies.
 
-### 3rd party tools
+### Third-party tools
 
 | DQ Tool | Key Features | Value to the users
 |:---------------------------|:------------|:----------------|
